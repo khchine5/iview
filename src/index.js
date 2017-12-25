@@ -17,13 +17,17 @@ import Checkbox from './components/checkbox';
 import Circle from './components/circle';
 import Collapse from './components/collapse';
 import ColorPicker from './components/color-picker';
+import Content from './components/content';
 import DatePicker from './components/date-picker';
 import Dropdown from './components/dropdown';
+import Footer from './components/footer';
 import Form from './components/form';
+import Header from './components/header';
 import Icon from './components/icon';
 import Input from './components/input';
 import InputNumber from './components/input-number';
 import Scroll from './components/scroll';
+import Layout from './components/layout';
 import LoadingBar from './components/loading-bar';
 import Menu from './components/menu';
 import Message from './components/message';
@@ -34,6 +38,7 @@ import Poptip from './components/poptip';
 import Progress from './components/progress';
 import Radio from './components/radio';
 import Rate from './components/rate';
+import Sider from './components/sider';
 import Slider from './components/slider';
 import Spin from './components/spin';
 import Steps from './components/steps';
@@ -71,21 +76,26 @@ const components = {
     Col,
     Collapse,
     ColorPicker,
+    Content: Content,
     DatePicker,
     Dropdown,
     DropdownItem: Dropdown.Item,
     DropdownMenu: Dropdown.Menu,
+    Footer: Footer,
     Form,
     FormItem: Form.Item,
+    Header: Header,
     Icon,
     Input,
     InputNumber,
     Scroll,
+    Sider: Sider,
+    Submenu: Menu.Sub,
+    Layout: Layout,
     LoadingBar,
     Menu,
     MenuGroup: Menu.Group,
     MenuItem: Menu.Item,
-    Submenu: Menu.Sub,
     Message,
     Modal,
     Notice,
@@ -122,7 +132,10 @@ const iview = {
     iButton: Button,
     iCircle: Circle,
     iCol: Col,
+    iContent: Content,
     iForm: Form,
+    iFooter: Footer,
+    iHeader: Header,
     iInput: Input,
     iMenu: Menu,
     iOption: Option,
@@ -133,6 +146,7 @@ const iview = {
 };
 
 const install = function(Vue, opts = {}) {
+    if (install.installed) return;
     locale.use(opts.locale);
     locale.i18n(opts.i18n);
 
@@ -153,7 +167,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 const API = {
-    version: '2.7.2',
+    version: process.env.VERSION, // eslint-disable-line no-undef
     locale: locale.use,
     i18n: locale.i18n,
     install,
